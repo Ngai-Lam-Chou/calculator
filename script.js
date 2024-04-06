@@ -1,11 +1,22 @@
-let temp = "";
+let temp = 0;
 
 function appendValue(val) {
-  temp = temp + val;
-  document.getElementById("result").value = temp;
+  if (document.getElementById("result").value === 0 || document.getElementById("result").value === '0'){
+    temp = val;
+  } else {
+    temp = temp + val;
+  }
+  document.getElementById('result').value = temp;
 }
 
 function calculate() {
+  let temp = document.getElementById("result").value;
+  
+
+  if (temp.startsWith("0")) {
+    temp = parseInt(temp, 10);
+  }
+  
   temp = eval(temp);
   document.getElementById("result").value = temp;
 }
@@ -16,28 +27,24 @@ function deleteLast() {
 }
 
 function clearResult() {
-  temp = 0;
-  document.getElementById("result").value = temp;
+  temp = "";
+  document.getElementById("result").value = "0";
 }
 
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    temp = document.getElementById("result").value.toString();
-    calculate();
-  }
-});
-
 function add() {
-  ol = document.querySelector("ol");
-  let li = document.createElement("li");
   calculate();
-  li.textContent = document.getElementById("result").value;
-  li.classList.add("clickable");
+  let ol = document.querySelector("ol");
+  let li = document.createElement("li");
+  let resultInput = document.getElementById("result").value;
+
+  li.innerText = resultInput
+  li.classList.add("clickable")
   li.onclick = function () {
-    var value = this.textContent;
+    let value = li.innerText;
     appendValue(value);
   };
   ol.appendChild(li);
+  
   clearResult();
 }
 
@@ -50,10 +57,19 @@ function clr() {
 
 function chg() {
   let liItems = document.querySelectorAll("li");
-  liItems.forEach(function (li) {
-    li.onclick = function () {
-      this.textContent = document.getElementById("result").value;
+
+  function handleClick() {
+    let resultValue = document.getElementById("result").value;
+    this.textContent = resultValue;
+    this.onclick = function(){
+      let value = this.innerText;
+      appendValue(value)
     };
+    console.log(this)
+  }
+
+  liItems.forEach(function (li) {
+    li.onclick = handleClick;
   });
 }
 
@@ -62,20 +78,14 @@ function del() {
   liItems.forEach(function (li) {
     li.onclick = function () {
       li.remove();
-      li.classList.remove("clickable");
+      return;
     };
-    li.classList.add("clickable");
   });
 }
 
-var listItems = document.querySelectorAll("li");
-
-function addtor() {
-  listItems.forEach(function (listItem) {
-    listItem.addEventListener("click", function () {
-      var value = this.innerText;
-      console.log(value);
-      appendValue(value);
-    });
-  });
-}
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    temp = document.getElementById("result").value.toString();
+    calculate();
+  }
+});

@@ -5,12 +5,13 @@ body {
   height: 100vh;
   background-color: #f2f2f2;
   font-family: Arial, sans-serif;
+  font-weight: bold;
 }
 
 .calculator {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 5px rgba(49, 49, 49, 0.9);
   padding: 20px;
   width: 300px;
 }
@@ -19,9 +20,10 @@ body {
   width: 100%;
   margin-bottom: 10px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 30px;
   width: 280px;
   text-align: right;
+  min-height: 30px;
 }
 
 .buttons {
@@ -31,12 +33,13 @@ body {
 }
 
 button {
-  padding: 10px;
+  padding: 15px;
   font-size: 16px;
   background-color: #eaeaea;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
@@ -53,4 +56,42 @@ body{
 
 .calculator{
   background-color: rgb(77, 77, 77);
+}
+
+button:nth-last-child(2){
+  background-color: orange;
+}
+
+ol {
+  counter-reset: alphabet-counter;
+  list-style-type: none;
+}
+
+ol li::before {
+  counter-increment: alphabet-counter;
+  content: counter(alphabet-counter, upper-alpha) ". ";
+}
+
+.clickable{
+  cursor: pointer;
+}
+
+#notepad {
+  margin-left: 20px;
+  background-color: burlywood;
+  min-width: 340px;
+  min-height: 460px;
+  box-shadow: 0 10px 5px rgba(49, 49, 49, 0.9);
+  border-radius: 10px;
+}
+
+#paper {
+  background-color: white;
+  min-height: 440px;
+  margin: 20px;
+}
+
+#paper ol li{
+  border-bottom: black 1px solid;
+  width: 80%;
 }

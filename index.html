@@ -9,6 +9,10 @@
   <div class="calculator">
     <input type="text" id="result">
     <div class="buttons">
+      <button onclick="add()">Add</button>
+      <button onclick="del()">Del</button>
+      <button onclick="chg()">Chg</button>
+      <button onclick="clr()">Clr</button>
       <button onclick="clearResult()">C</button>
       <button onclick="deleteLast()">DEL</button>
       <button onclick="appendValue('(')">(</button>
@@ -29,11 +33,13 @@
       <button onclick="appendValue('.')">.</button>
       <button onclick="calculate()">=</button>
       <button onclick="appendValue('/')">/</button>
-
-  
     </div>
   </div>
-
-  <script src="script.js"></script>
+  <div id="notepad">
+    <section id="paper">
+    <ol>
+    </ol>
+  </section>
+  </div>
 </body>
 </html>

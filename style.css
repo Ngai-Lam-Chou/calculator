@@ -14,7 +14,7 @@ body {
   box-shadow: 0 10px 5px rgba(49, 49, 49, 0.9);
   padding: 20px;
   max-width: 300px;
-  min-height: 440px;
+  min-height: 360px;
 }
 
 #result {
@@ -71,6 +71,7 @@ ol {
 ol li::before {
   counter-increment: alphabet-counter;
   content: counter(alphabet-counter, upper-alpha) ". ";
+  margin:10px;
 }
 
 .clickable{
@@ -81,14 +82,14 @@ ol li::before {
   margin-left: 20px;
   background-color: burlywood;
   min-width: 340px;
-  min-height: 460px;
+  min-height: 400px;
   box-shadow: 0 10px 5px rgba(49, 49, 49, 0.9);
   border-radius: 10px;
 }
 
 #paper {
   background-color: white;
-  min-height: 440px;
+  min-height: 360px;
   margin: 20px;
 }
 
@@ -97,6 +98,12 @@ ol li::before {
   width: 80%;
 }
 
-.toggled{
-  background-color: #c2c2c2;
+#notepad {
+  position: relative;
+}
+
+#topRightButton {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

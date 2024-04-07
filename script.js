@@ -19,6 +19,9 @@ function calculate() {
   
   temp = eval(temp);
   document.getElementById("result").value = temp;
+
+  addNotePad();
+  clearResult();
 }
 
 function deleteLast() {
@@ -31,56 +34,31 @@ function clearResult() {
   document.getElementById("result").value = "0";
 }
 
-function add() {
-  calculate();
+function addNotePad() {
   let ol = document.querySelector("ol");
   let li = document.createElement("li");
   let resultInput = document.getElementById("result").value;
 
-  li.innerText = resultInput
-  li.classList.add("clickable")
+  li.innerText = resultInput;
+  li.classList.add("clickable");
   li.onclick = function () {
     let value = li.innerText;
     appendValue(value);
   };
   ol.appendChild(li);
-  
-  clearResult();
-}
 
-function clr() {
-  let li = document.querySelectorAll("li");
-  li.forEach(function (element) {
-    element.remove();
-  });
-}
-
-function chg() {
-  let liItems = document.querySelectorAll("li");
-
-  function handleClick() {
-    let resultValue = document.getElementById("result").value;
-    this.textContent = resultValue;
-    this.onclick = function(){
-      let value = this.innerText;
-      appendValue(value)
-    };
-    console.log(this)
+  const maxLiElements = 16;
+  if (ol.children.length > maxLiElements) {
+    ol.removeChild(ol.firstChild);
   }
-
-  liItems.forEach(function (li) {
-    li.onclick = handleClick;
-  });
 }
 
-function del() {
-  let liItems = document.querySelectorAll("li");
-  liItems.forEach(function (li) {
-    li.onclick = function () {
-      li.remove();
-      return;
-    };
-  });
+function clearNotePad() {
+  let ol = document.querySelector("ol");
+
+  while (ol.firstChild) {
+    ol.removeChild(ol.firstChild);
+  }
 }
 
 document.addEventListener("keydown", function (event) {

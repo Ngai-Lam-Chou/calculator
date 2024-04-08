@@ -22,6 +22,7 @@ function calculate() {
 
   addNotePad();
   clearResult();
+  appendValue(temp)
 }
 
 function deleteLast() {

@@ -13,7 +13,7 @@ function calculate() {
   let temp = document.getElementById("result").value;
   
 
-  if (temp.startsWith("0")) {
+  if (temp.startsWith("0") && temp === "0") {
     temp = parseInt(temp, 10);
   }
   

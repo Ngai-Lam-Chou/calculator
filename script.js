@@ -1,28 +1,32 @@
 let temp = 0;
 
 function appendValue(val) {
-  if (document.getElementById("result").value === 0 || document.getElementById("result").value === '0'){
-    temp = val;
+  if (val !== ".") {
+    if (document.getElementById("result").value === "0") {
+      temp = val;
+    }else {
+        temp = temp + val;
+    }
   } else {
     temp = temp + val;
   }
-  document.getElementById('result').value = temp;
+
+  document.getElementById("result").value = temp;
 }
 
 function calculate() {
   let temp = document.getElementById("result").value;
-  
 
-  if (temp.startsWith("0") && temp === "0") {
+  if (temp === "0") {
     temp = parseInt(temp, 10);
   }
-  
+
   temp = eval(temp);
   document.getElementById("result").value = temp;
 
   addNotePad();
   clearResult();
-  appendValue(temp)
+  appendValue(temp);
 }
 
 function deleteLast() {
